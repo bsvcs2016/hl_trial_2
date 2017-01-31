@@ -377,6 +377,7 @@ func (t *SimpleChaincode) requestForQuote(stub shim.ChaincodeStubInterface, args
 		
 		// add Trade ID to entity's trade history
 		err = updateTradeHistory(stub, t.ClientID, t.TradeID)
+		fmt.Println(" Entity "  +err.Error())
 		if err != nil {
 			_ = updateTransactionStatus(stub, transactionID, "Error while updating trade history")
 			return nil, nil
@@ -556,6 +557,7 @@ func (t *SimpleChaincode) respondToQuote(stub shim.ChaincodeStubInterface, args 
 		
 		// updating trade transaction history ans status
 		err = updateTradeState(stub, t.TradeID, t.TransactionID,"Responded")
+		fmt.Println(" Entity "  +err.Error())
 		if err != nil {
 			_ = updateTransactionStatus(stub, transactionID, "Error while updating trade state")
 			return nil, nil
@@ -1028,7 +1030,9 @@ func updateTradeHistory(stub shim.ChaincodeStubInterface, entityID string, trade
 		return errors.New("Error while getting entity info from ledger")
 	}
 	var entity Entity
-	err = json.Unmarshal(entitybyte, &entity)		
+	err = json.Unmarshal(entitybyte, &entity)
+	fmt.Println("updateTradeHistory Entity "  +err.Error())
+	fmt.Println(" EntityByte "  +str(entitybyte))
 	if err != nil {
 		return errors.New("Error while unmarshalling entity data")
 	}
@@ -1039,6 +1043,7 @@ func updateTradeHistory(stub shim.ChaincodeStubInterface, entityID string, trade
 	if err == nil {
 		err = stub.PutState(entity.EntityID,b)
 	} else {
+		fmt.Println("Put Entity "  +err.Error())
 		return errors.New("Error while updating entity status")
 	}
 	return nil
