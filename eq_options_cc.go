@@ -1025,7 +1025,8 @@ func (t *SimpleChaincode) readTradeIDsOfUser(stub shim.ChaincodeStubInterface, a
 }
 func updateTradeHistory(stub shim.ChaincodeStubInterface, entityID string, tradeID string) (error) {
 	// read entity state
-	entitybyte,err := stub.GetState(entityID)																										
+	fmt.Println(" EntityID "  +entityID)
+	entitybyte,err := stub.GetState(entityID)
 	if err != nil {
 		return errors.New("Error while getting entity info from ledger")
 	}
