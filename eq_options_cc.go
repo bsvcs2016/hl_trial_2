@@ -1032,7 +1032,7 @@ func updateTradeHistory(stub shim.ChaincodeStubInterface, entityID string, trade
 	var entity Entity
 	err = json.Unmarshal(entitybyte, &entity)
 	fmt.Println("updateTradeHistory Entity "  +err.Error())
-	fmt.Println(" EntityByte "  +str(entitybyte))
+	fmt.Println(" EntityByte "  +string(entitybyte))
 	if err != nil {
 		return errors.New("Error while unmarshalling entity data")
 	}
