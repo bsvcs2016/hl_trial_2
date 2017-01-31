@@ -63,9 +63,9 @@ const entity3 = "user_type2_fc1edf1fbb"
 const entity4 = "user_type2_54bbdee6af"
 */
 const entity1 = "user_type1_0"
-const entity2 = "user_type1_2"
-const entity3 = "user_type2_fc1edf1fbb"
-const entity4 = "user_type2_54bbdee6af"
+const entity2 = "user_type1_1"
+const entity3 = "user_type1_2"
+const entity4 = "user_type1_3"
 
 
 type SimpleChaincode struct {
